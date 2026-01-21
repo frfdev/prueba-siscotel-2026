@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "usuarios/index"
+  get "usuarios/new"
+  get "usuarios/show"
+  get "usuarios/create"
+  get "usuarios/edit"
+  get "usuarios/update"
+  get "usuarios/destroy"
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -14,4 +21,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "home#index"
+  resources :usuarios
 end

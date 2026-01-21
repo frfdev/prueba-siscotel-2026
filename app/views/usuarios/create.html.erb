@@ -1,0 +1,65 @@
+<div>
+    <div class="row">
+        <div class="col-12">
+            <div class="mb-4">
+            <h2 class="mb-4">Formulario de Registro</h2>
+            <form>
+                <!-- Tipo de persona -->
+                <div class="mb-3">
+                    <label for="tipoPersona" class="form-label">Tipo de persona</label>
+                    <select class="form-select" id="tipoPersona" required>
+                        <option value="">Seleccione...</option>
+                        <option value="natural">Natural</option>
+                        <option value="juridica">Jurídica</option>
+                    </select>
+                </div>
+
+                <!-- Número de documento -->
+                <div class="mb-3">
+                    <label for="documento" class="form-label">Número de documento de identificación</label>
+                    <input type="text" class="form-control" id="documento" placeholder="CI, Pasaporte, RIF, etc." required>
+                </div>
+
+                <!-- Fecha de emisión -->
+                <div class="mb-3">
+                    <label for="fechaEmision" class="form-label">Fecha de emisión del documento</label>
+                    <input type="date" class="form-control" id="fechaEmision" required>
+                </div>
+
+                <!-- Fecha de vencimiento -->
+                <div class="mb-3">
+                    <label for="fechaVencimiento" class="form-label">Fecha de vencimiento del documento</label>
+                    <input type="date" class="form-control" id="fechaVencimiento" required>
+                </div>
+
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo" required>
+                </div>
+
+                <!-- Correo electrónico -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <!-- Teléfono principal -->
+                <div class="mb-3">
+                    <label for="telefonoPrincipal" class="form-label">Teléfono principal</label>
+                    <input type="tel" class="form-control" id="telefonoPrincipal" placeholder="+58 000-0000000" required>
+                </div>
+
+                <!-- Teléfono secundario -->
+                <div class="mb-3">
+                    <label for="telefonoSecundario" class="form-label">Teléfono secundario (opcional)</label>
+                    <input type="tel" class="form-control" id="telefonoSecundario" placeholder="+58 000-0000000">
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+            </div>            
+        </div>    
+    </div>
+</div>

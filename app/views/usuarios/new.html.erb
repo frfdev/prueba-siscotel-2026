@@ -1,0 +1,106 @@
+<div class="bg-warning">
+    <div class="row border border-dark border-4 border-top-0 border-end-0 border-start-0">
+        <div class="col-3">
+             <%= image_tag("registro/banner_1.jpg", alt: "Sisco Bank banner 1", class: "w-100") %>
+        </div>
+        <div class="col-6 m-auto">
+             <h1 class="text-center my-4 fw-bold">HAZTE PARTE DE LA FAMILIA FINANCIERA QUE TE ENTIENDE</h1>
+        </div>
+        <div class="col-3">
+             <%= image_tag("registro/banner_2.jpg", alt: "Sisco Bank banner 2", class: "w-100") %>
+        </div>
+    </div>
+    
+    <div class="w-50 mx-auto">
+        <div class="row">
+            <div class="col-12">
+                <div class="my-4 p-4 bg-body-secondary shadow">
+                <h2 class="mb-4 text-center border border-4 pb-2 border-black border-top-0 border-end-0 border-start-0 ">Formulario de Registro</h2>
+                <form>
+                    
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="tipoPersona" class="form-label">Tipo de persona</label>
+                                <select class="form-select" id="tipoPersona" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="natural">Natural</option>
+                                    <option value="juridica">Jurídica</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo" required>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required>
+                            </div>                         
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="tipoPersona" class="form-label">Tipo de documento</label>
+                                <select class="form-select" id="tipoPersona" required>
+                                    <option value="">Seleccione...</option>
+                                    <option value="natural">Cedula</option>
+                                    <option value="juridica">RIF</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label for="documento" class="form-label">Número de documento de identificación</label>
+                                <input type="text" class="form-control" id="documento" placeholder="CI, Pasaporte, RIF, etc." required>
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">                            
+                            <div class="col-6">
+                                <label for="fechaEmision" class="form-label">Fecha de emisión del documento</label>
+                                <input type="date" class="form-control" id="fechaEmision" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="fechaVencimiento" class="form-label">Fecha de vencimiento del documento</label>
+                                <input type="date" class="form-control" id="fechaVencimiento" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="telefonoPrincipal" class="form-label">Teléfono principal</label>
+                                <input type="tel" class="form-control" id="telefonoPrincipal" placeholder="+58 000-0000000" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="telefonoSecundario" class="form-label">Teléfono secundario (opcional)</label>
+                                <input type="tel" class="form-control" id="telefonoSecundario" placeholder="+58 000-0000000">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-warning w-100">Enviar</button>
+                            </div>
+                            <div class="col-6">
+                                <%= link_to "Volver", root_path, class: "d-block btn btn-danger w-100" %>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                </div>            
+            </div>    
+        </div>
+    </div>
+</div>

@@ -15,8 +15,7 @@
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
@@ -26,6 +25,36 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-secondary shadow-sm">
+        <div class="container-fluid">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag("logo.png", alt: "Sisco Bank", class: "w-15") %>
+          <% end %>
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end me-2" id="navbarSupportedContent">
+            <% unless current_page?(new_usuario_path) || current_page?(usuarios_path) %>
+              <div class="d-flex">
+                <%= link_to "Registrar", new_usuario_path, class: "d-block btn btn-warning", method: :post %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+    <div class="container-fluid"> 
+      <footer class="py-3 bg-black">  
+        <p class="text-center m-0 text-white">© <%= Time.current.year %> Sisco Bank C.A</p> 
+      </footer> 
+    </div>
   </body>
 </html>
