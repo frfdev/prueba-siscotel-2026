@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+TipoDocumento.find_or_create_by(documento: "Cedula")
+TipoDocumento.find_or_create_by(documento: "Pasaporte")
+TipoDocumento.find_or_create_by(documento: "Licencia")
+TipoDocumento.find_or_create_by(documento: "RIF")
+
+TipoPersona.find_or_create_by(tipo: "Natural")
+TipoPersona.find_or_create_by(tipo: "Juridico")

@@ -1,0 +1,2 @@
+class TipoPersona < ApplicationRecord
+end
