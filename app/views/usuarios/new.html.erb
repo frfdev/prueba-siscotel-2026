@@ -15,90 +15,117 @@
         <div class="row">
             <div class="col-12">
                 <div class="my-4 p-4 bg-body-secondary shadow">
-                <h2 class="mb-4 text-center border border-4 pb-2 border-black border-top-0 border-end-0 border-start-0 ">Formulario de Registro</h2>
-                <form>
-                    
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="tipoPersona" class="form-label">Tipo de persona</label>
-                                <select class="form-select" id="tipoPersona" required>
-                                    <option value="">Seleccione...</option>
-                                    <option value="natural">Natural</option>
-                                    <option value="juridica">Jurídica</option>
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre completo" required>
-                            </div>                            
-                        </div>
-                    </div>
+                    <h2 class="mb-4 text-center border border-4 pb-2 border-black border-top-0 border-end-0 border-start-0 ">Formulario de Registro</h2>
 
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="email" class="form-label">Correo electrónico</label>
-                                <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required>
-                            </div>                         
-                        </div>
-                    </div>
+                    <% if notice %>
+                      <div class="alert alert-success text-center">
+                        <%= notice %>
+                      </div>
+                    <% end %>
 
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="tipoPersona" class="form-label">Tipo de documento</label>
-                                <select class="form-select" id="tipoPersona" required>
-                                    <option value="">Seleccione...</option>
-                                    <option value="natural">Cedula</option>
-                                    <option value="juridica">RIF</option>
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                <label for="documento" class="form-label">Número de documento de identificación</label>
-                                <input type="text" class="form-control" id="documento" placeholder="CI, Pasaporte, RIF, etc." required>
-                            </div>                            
-                        </div>
-                    </div>
+                    <% if alert %>
+                      <div class="alert alert-danger text-center">
+                        <%= alert %>
+                      </div>
+                    <% end %>
 
-                    <div class="mb-3">
-                        <div class="row">                            
-                            <div class="col-6">
-                                <label for="fechaEmision" class="form-label">Fecha de emisión del documento</label>
-                                <input type="date" class="form-control" id="fechaEmision" required>
+
+                    <%= form_with(model: @usuario, local: true) do |form| %>
+
+                        <%= form.fields_for :persona do |p| %>
+
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <%= p.label :tipo_persona_id, "Tipo de persona", class: "form-label" %>
+                                        <%= p.collection_select :tipo_persona_id, @tipo_persona, :id, :tipo,
+                                            { prompt: "Seleccione..." },
+                                            { class: "form-select", required: true } 
+                                        %>                                
+                                    </div>
+                                    <div class="col-6">
+                                        <%= p.label :nombre, "Nombre", class: "form-label" %>
+                                        <%= p.text_field :nombre, class: "form-control", required: true %> 
+                                    </div>                            
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <label for="fechaVencimiento" class="form-label">Fecha de vencimiento del documento</label>
-                                <input type="date" class="form-control" id="fechaVencimiento" required>
+
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                         <%= p.label :correo, "Correo electrónico", class: "form-label" %>
+                                         <%= p.email_field :correo, class: "form-control", required: true %> 
+                                    </div>                         
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="row">
+                                    <div class="col-6">                                
+                                        <%= p.label :telefono_principal, "Teléfono principal", class: "form-label" %>
+                                        <%= p.telephone_field :telefono_principal,
+                                            class: "form-control",
+                                            required: true 
+                                        %>
+                                    </div>
+                                    <div class="col-6">
+                                        <%= p.label :telefono_secundario, "Teléfono secundario (opcional)", class: "form-label" %>
+                                        <%= p.telephone_field :telefono_secundario,
+                                            class: "form-control",
+                                            required: false 
+                                        %>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <% end %>
+    
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <%= form.label :tipo_documento_id, "Tipo de documento", class: "form-label" %>
+                                    <%= form.collection_select :tipo_documento_id, @tipo_documento, :id, :documento,
+                                        { prompt: "Seleccione..." },
+                                        { class: "form-select", required: true } 
+                                    %> 
+                                </div>
+                                <div class="col-6">
+                                    <%= form.label :n_documento, "Número de documento de identificación", class: "form-label" %>
+                                    <%= form.text_field :n_documento, class: "form-control", required: true %> 
+                                </div>                            
                             </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="telefonoPrincipal" class="form-label">Teléfono principal</label>
-                                <input type="tel" class="form-control" id="telefonoPrincipal" placeholder="+58 000-0000000" required>
-                            </div>
-                            <div class="col-6">
-                                <label for="telefonoSecundario" class="form-label">Teléfono secundario (opcional)</label>
-                                <input type="tel" class="form-control" id="telefonoSecundario" placeholder="+58 000-0000000">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <button type="submit" class="btn btn-warning w-100">Enviar</button>
-                            </div>
-                            <div class="col-6">
-                                <%= link_to "Volver", root_path, class: "d-block btn btn-danger w-100" %>
+    
+                        <div class="mb-3">
+                            <div class="row">                            
+                                <div class="col-6">
+                                    <%= form.label :fecha_emision, "Fecha de emisión del documento", class: "form-label" %>
+                                    <%= form.date_field :fecha_emision,
+                                        class: "form-control",
+                                        required: true 
+                                    %>
+                                </div>
+                                <div class="col-6">
+                                    <%= form.label :fecha_vencimiento, "Fecha de vencimiento del documento", class: "form-label" %>
+                                    <%= form.date_field :fecha_vencimiento,
+                                        class: "form-control",
+                                        required: true 
+                                    %>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </form>
+    
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <%= form.submit "Crear", class: "btn btn-warning w-100" %>
+                                </div>
+                                <div class="col-6">
+                                    <%= link_to "Volver", root_path, class: "d-block btn btn-danger w-100" %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>            
             </div>    
         </div>

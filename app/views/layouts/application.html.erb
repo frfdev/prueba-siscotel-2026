@@ -37,7 +37,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end me-2" id="navbarSupportedContent">
-            <% unless current_page?(new_usuario_path) || current_page?(usuarios_path) %>
+            <% if current_page?(root_path) %>
               <div class="d-flex">
                 <%= link_to "Registrar", new_usuario_path, class: "d-block btn btn-warning", method: :post %>
               </div>
