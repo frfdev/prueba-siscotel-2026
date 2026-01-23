@@ -11,3 +11,17 @@ Se maquetó un diagrama de base de datos con las tablas que serán utilizadas pa
 
 👉 [Link del diagarama](https://dbdiagram.io/d/prueba-siscotel-2026-69704dc9bd82f5fce218ae3e)
 
+
+### RUTAS
+
+aqui se dejan la lista de rutas en caso de que se use a nivel de localhost
+
+http://127.0.0.1:3000/ 👈 Inicio de la pagina
+http://127.0.0.1:3000/usuarios 👈 Lista de usuarios creados
+
+
+### ADICIONALES
+
+* Se creo una carpeta llamada PSD cual contiene el logo y favicon de la aplicacion
+* Se creo una carpeta llamada IA donde se hizo un QA que probara la aplicacion (No pudo ser probado por faltas de credito, pero se deja la carpeta como muestra)
+* La aplicacion soporta PWA (Progressive Web App)
