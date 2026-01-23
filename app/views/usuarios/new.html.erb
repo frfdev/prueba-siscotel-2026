@@ -1,17 +1,11 @@
 <div class="bg-warning-light">
-    <div class="row border border-dark border-4 border-top-0 border-end-0 border-start-0">
-        <div class="col-3">
-             <%= image_tag("registro/banner_1.jpg", alt: "Sisco Bank banner 1", class: "w-100") %>
-        </div>
-        <div class="col-6 m-auto">
-             <h1 class="text-center my-4 fw-bold">HAZTE PARTE DE LA FAMILIA FINANCIERA QUE TE ENTIENDE</h1>
-        </div>
-        <div class="col-3">
-             <%= image_tag("registro/banner_2.jpg", alt: "Sisco Bank banner 2", class: "w-100") %>
+    <div class="row header-register">
+        <div class="col-12 col-md-6 m-auto border border-dark border-4 border-top-0 border-end-0 border-start-0">
+             <h1 class="text-center my-4 fw-bold font-size-title-register ">HAZTE PARTE DE LA FAMILIA FINANCIERA QUE TE ENTIENDE</h1>
         </div>
     </div>
     
-    <div class="w-50 mx-auto">
+    <div class="form-width mx-auto">
         <div class="row">
             <div class="col-12">
                 <div class="my-4 p-4 bg-body-secondary shadow">
@@ -34,34 +28,34 @@
 
                         <%= form.fields_for :persona do |p| %>
 
-                            <div class="mb-3">
+                            <div>
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 mb-3">
                                         <%= p.label :tipo_persona_id, "Tipo de persona", class: "form-label" %>
                                         <%= p.collection_select :tipo_persona_id, @tipo_persona, :id, :tipo,
                                             { prompt: "Seleccione..." },
                                             { class: "form-select", autocomplete: "off", required: true, onchange: "checkTipoPersona(this.value)" } 
                                         %>                                
                                     </div>
-                                    <div class="col-6" id="input_nombre">
+                                    <div class="col-12 col-md-6 col-lg-6 mb-3" id="input_nombre">
                                         <%= p.label :nombre, "Nombre completo", class: "form-label" %>
                                         <%= p.text_field :nombre, pattern: "[A-Za-záéíóúÁÉÍÓÚñÑ ]+", autocomplete: "off", title: "Solo se permiten letras y espacios", class: "form-control", required: true %> 
                                     </div>                            
                                 </div>
                             </div>
 
-                            <div class="mb-3">
+                            <div>
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-12 mb-3">
                                          <%= p.label :correo, "Correo electrónico", class: "form-label" %>
                                          <%= p.email_field :correo, pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", title: "formato de correo invalido", class: "form-control", autocomplete: "off", required: true %> 
                                     </div>                         
                                 </div>
                             </div>
 
-                            <div class="mb-3">
+                            <div>
                                 <div class="row">
-                                    <div class="col-6">                                
+                                    <div class="col-12 col-md-6 col-lg-6 mb-3">                                
                                         <%= p.label :telefono_principal, "Teléfono principal", class: "form-label" %>
                                         <%= p.telephone_field :telefono_principal,
                                             class: "form-control",
@@ -71,7 +65,7 @@
                                             required: true 
                                         %>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-12 col-md-6 col-lg-6 mb-3">
                                         <%= p.label :telefono_secundario, "Teléfono secundario (opcional)", class: "form-label"  %>
                                         <%= p.telephone_field :telefono_secundario,
                                             class: "form-control",
@@ -86,25 +80,25 @@
 
                         <% end %>
     
-                        <div class="mb-3">
+                        <div>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 mb-3">
                                     <%= form.label :tipo_documento_id, "Tipo de documento", class: "form-label" %>
                                     <%= form.collection_select :tipo_documento_id, @tipo_documento, :id, :documento,
                                         { prompt: "Seleccione..." },
                                         { class: "form-select", autocomplete: "off", required: true, onchange: "checkTipoDocumento(this)" } 
                                     %> 
                                 </div>
-                                <div class="col-6" id="input_documento">
+                                <div class="col-12 col-md-6 col-lg-6 mb-3" id="input_documento">
                                     <%= form.label :n_documento, "Número de documento de identificación", class: "form-label" %>
                                     <%= form.text_field :n_documento, pattern: "[0-9]{7,12}", title: "formato de documento invalido o excede la longitud de caracteres, max 12", autocomplete: "off", class: "form-control", required: true %> 
                                 </div>                            
                             </div>
                         </div>
     
-                        <div class="mb-3">
+                        <div>
                             <div class="row">                            
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 mb-3">
                                     <%= form.label :fecha_emision, "Fecha de emisión del documento", class: "form-label" %>
                                     <%= form.date_field :fecha_emision,
                                         class: "form-control",
@@ -112,7 +106,7 @@
                                         required: true 
                                     %>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 mb-3">
                                     <%= form.label :fecha_vencimiento, "Fecha de vencimiento del documento", class: "form-label" %>
                                     <%= form.date_field :fecha_vencimiento,
                                         class: "form-control",
@@ -123,12 +117,12 @@
                             </div>
                         </div>
     
-                        <div class="mb-3">
+                        <div>
                             <div class="row">                                
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 mb-3">
                                     <%= link_to "Volver", root_path, class: "d-block btn btn-danger w-100" %>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-12 col-md-6 col-lg-6 mb-3">
                                     <%= form.submit "Crear", class: "btn btn-warning w-100" %>
                                 </div>
                             </div>

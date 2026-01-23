@@ -14,6 +14,8 @@
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    
+    <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/favicon.ico">
@@ -38,6 +40,13 @@
     <%= javascript_include_tag "https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js" %>
     <%= javascript_include_tag "https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js" %>
     
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/service-worker.js")
+          .then(reg => console.log("Service Worker registrado:", reg))
+          .catch(err => console.error("Error registrando SW:", err));
+      }
+    </script>
   </head>
 
   <body>
@@ -48,17 +57,9 @@
           <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag("logo.png", alt: "Sisco Bank", class: "w-15") %>
           <% end %>
-          <a class="navbar-brand" href="#"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end me-2" id="navbarSupportedContent">
-            <% if current_page?(root_path) %>
-              <div class="d-flex">
-                <%= link_to "Registrar", new_usuario_path, class: "d-block btn btn-warning fw-bold", method: :post %>
-              </div>
-            <% end %>
-          </div>
         </div>
       </nav>
     </header>

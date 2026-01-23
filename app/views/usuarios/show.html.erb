@@ -1,74 +1,74 @@
 <div class="bg-warning-light">    
-    <div class="w-50 mx-auto">
+    <div class="show-content-width mx-auto">
         <div class="row">
             <div class="col-12">
                 <div class="my-4 p-4 bg-body-secondary shadow">
                     <h2 class="mb-4 text-center border border-4 pb-2 border-black border-top-0 border-end-0 border-start-0 ">Visualizar usuario</h2>
 
-                    <div class="mb-3">
+                    <div>
                       <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Tipo de persona:</strong>
                           <p><%= @usuario.persona.tipo_persona.tipo %></p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Nombre:</strong>
                           <p><%= @usuario.persona.nombre %></p>
                         </div>
                       </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div>
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                           <strong>Correo electrónico:</strong>
                           <p><%= @usuario.persona.correo %></p>
                         </div>
                       </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div>
                       <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Teléfono principal:</strong>
                           <p><%= @usuario.persona.telefono_principal %></p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Teléfono secundario:</strong>
                           <p><%= @usuario.persona.telefono_secundario.presence || "No registrado" %></p>
                         </div>
                       </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div>
                       <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Tipo de documento:</strong>
                           <p><%= @usuario.tipo_documento.documento %></p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Número de documento:</strong>
                           <p><%= @usuario.n_documento %></p>
                         </div>
                       </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div>
                       <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Fecha de emisión:</strong>
                           <p><%= @usuario.fecha_emision %></p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
                           <strong>Fecha de vencimiento:</strong>
                           <p><%= @usuario.fecha_vencimiento %></p>
                         </div>
                       </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div>
                       <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                           <%= link_to "Volver", usuarios_path, class: "btn btn-danger w-100" %>
                         </div>
                       </div>
