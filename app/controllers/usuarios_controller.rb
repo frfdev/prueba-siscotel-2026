@@ -31,10 +31,23 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(usuario_params)
 
     nombre = params[:usuario][:persona_attributes][:nombre]
-    nombre_split = nombre.split(' ')
+    
+    tipo_persona = params[:usuario][:persona_attributes][:tipo_persona_id].to_i
+    
+    if tipo_persona == 1
+      
+      nombre_split = nombre.split(' ')
+      
+      if nombre_split.size < 2
+        return errors_formulario("Debe ingresar al menos nombre y apellido")
+      end
+      
+    elsif tipo_persona == 2
 
-    if nombre_split.size < 2
-      return errors_formulario("Debe ingresar al menos nombre y apellido")
+      if Persona.exists?(nombre: nombre.to_s.downcase)
+        return errors_formulario("Ya existe el nombre de esta empresa")
+      end
+
     end
 
     correo = params[:usuario][:persona_attributes][:correo].to_s.downcase
@@ -86,6 +99,12 @@ class UsuariosController < ApplicationController
       return errors_formulario("La fecha de emisión no puede ser mayor que la fecha de vencimiento")
     end
 
+    n_documento = params[:usuario][:n_documento]
+
+    if Usuario.exists?(n_documento: n_documento)
+      return errors_formulario("Ya existe un usuario con este numero de identificacion")
+    end
+
     if @usuario.save
       redirect_to new_usuario_path, notice: "Usuario creado"
     else
@@ -105,10 +124,23 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.find(params[:id])
 
     nombre = params[:usuario][:persona_attributes][:nombre]
-    nombre_split = nombre.split(' ')
+    
+    tipo_persona = params[:usuario][:persona_attributes][:tipo_persona_id].to_i
+    
+    if tipo_persona == 1
+      
+      nombre_split = nombre.split(' ')
+      
+      if nombre_split.size < 2
+        return errors_formulario("Debe ingresar al menos nombre y apellido")
+      end
+      
+    elsif tipo_persona == 2
 
-    if nombre_split.size < 2
-      return errors_formulario("Debe ingresar al menos nombre y apellido", :edit)
+      if Persona.exists?(nombre: nombre.to_s.downcase)
+        return errors_formulario("Ya existe el nombre de esta empresa")
+      end
+
     end
 
     correo = params[:usuario][:persona_attributes][:correo].to_s.downcase

@@ -28,7 +28,7 @@
                                         <%= p.label :tipo_persona_id, "Tipo de persona", class: "form-label" %>
                                         <%= p.collection_select :tipo_persona_id, @tipo_persona, :id, :tipo,
                                             { prompt: "Seleccione..." },
-                                            { class: "form-select", autocomplete: "off", required: true, onchange: "checkTipoPersona(this.value)" } 
+                                            { class: "form-select", disabled: true, autocomplete: "off", required: true, onchange: "checkTipoPersona(this.value)" } 
                                         %>                                
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-6 mb-3" id="input_nombre">
@@ -80,12 +80,12 @@
                                     <%= form.label :tipo_documento_id, "Tipo de documento", class: "form-label" %>
                                     <%= form.collection_select :tipo_documento_id, @tipo_documento, :id, :documento,
                                         { prompt: "Seleccione..." },
-                                        { class: "form-select", autocomplete: "off", required: true, onchange: "checkTipoDocumento(this)" } 
+                                        { class: "form-select", disabled: true, autocomplete: "off", required: true, onchange: "checkTipoDocumento(this)" } 
                                     %> 
                                 </div>
                                 <div class="ccol-12 col-md-6 col-lg-6 mb-3" id="input_documento">
                                     <%= form.label :n_documento, "Número de documento de identificación", class: "form-label" %>
-                                    <%= form.text_field :n_documento, pattern: "[0-9]{7,12}", title: "formato de documento invalido o excede la longitud de caracteres, max 12", autocomplete: "off", class: "form-control", required: true %> 
+                                    <%= form.text_field :n_documento, disabled: true, pattern: "[0-9]{7,12}", title: "formato de documento invalido o excede la longitud de caracteres, max 12", autocomplete: "off", class: "form-control", required: true %> 
                                 </div>                            
                             </div>
                         </div>
