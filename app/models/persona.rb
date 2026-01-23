@@ -3,4 +3,5 @@ class Persona < ApplicationRecord
   has_one :usuario
 
   validates :nombre, :correo, :telefono_principal, presence: true
+
 end

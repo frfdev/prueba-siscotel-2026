@@ -1,23 +1,31 @@
-<div class="bg-warning">    
+<div class="bg-warning-light">    
     <div class="w-50 mx-auto">
         <div class="row">
             <div class="col-12">
                 <div class="my-4 p-4 bg-body-secondary shadow">
                     <h2 class="mb-4 text-center border border-4 pb-2 border-black border-top-0 border-end-0 border-start-0 ">Tabla de Usuarios Creados</h2>
-
-                    <%= form_with url: usuarios_path, method: :get, local: true do |form| %>
-                      <%= form.label :q, "Buscar usuario", class: "form-label" %>
-                      <%= form.text_field :q, class: "form-control", placeholder: "Ingrese nombre o documento" %>
-                      <%= form.submit "Buscar", class: "btn btn-primary w-100 mb-4" %>
+                    
+                    <% if notice %>
+                      <div class="alert alert-success text-center">
+                        <%= notice %>
+                      </div>
                     <% end %>
+
+                    <% if alert %>
+                      <div class="alert alert-danger text-center">
+                        <%= alert %>
+                      </div>
+                    <% end %>
+
 
                     <div class="row">
                         <div class="col-12">
-                            <table class="table text-center table-responsive">
+                            <table class="table text-center table-responsive" id="usuarios_lista">
                                 <thead>
                                     <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nombre</th>
+                                    <th scope="col">Tipo Persona</th>
                                     <th scope="col">Numero de documento</th>
                                     <th scope="col">Acciones</th>
                                     </tr>
@@ -25,19 +33,26 @@
                                 <tbody>
                                     <% @usuarios.each_with_index do |usuario, index| %>
                                         <tr>
-                                            <th scope="row"> <%= index+1 %> </th>
+                                            <th scope="row"> <%= index+1 %> </th>                                            
                                             <td> <%= usuario.persona.nombre %></td>
+                                            <td> <%= usuario.persona.tipo_persona.tipo %></td>
                                             <td> <%= usuario.n_documento %> </td>
                                             <td>
                                                 <div class="d-flex justify-content-center"> 
                                                     <div class="mx-2"> 
-                                                        <%= link_to "Visualizar", usuario_path(usuario), class: "btn btn-info" %>
+                                                        <%= link_to usuario_path(usuario), title: "Visualizar", class: "btn btn-info" do %>
+                                                            <i class="far fa-eye"></i>
+                                                         <% end %> 
                                                     </div>
                                                     <div class="mx-2"> 
-                                                        <%= link_to "Editar", edit_usuario_path(usuario), class: "btn btn-primary" %> 
+                                                        <%= link_to edit_usuario_path(usuario), title: "Editar", class: "btn btn-primary" do %> 
+                                                            <i class="fas fa-edit"></i>
+                                                        <% end %> 
                                                     </div>
                                                     <div class="mx-2"> 
-                                                        <%= button_to "Eliminar", usuario_path(usuario), class: "btn btn-danger", method: :delete, data: { turbo_confirm: "¿Seguro que quieres eliminar este usuario?" } %>
+                                                        <%= button_to usuario_path(usuario), title: "Eliminar", class: "btn btn-danger", method: :delete, data: { turbo_confirm: "¿Seguro que quieres eliminar este usuario?" } do %>
+                                                            <i class="fas fa-trash"></i>
+                                                        <% end %> 
                                                     </div>
                                                 </div>
                                             </td>
@@ -53,3 +68,20 @@
         </div>
     </div>
 </div>
+
+<script>
+  document.addEventListener("turbo:load", function () {
+    if (!$.fn.DataTable.isDataTable('#usuarios_lista')) {
+      $('#usuarios_lista').DataTable({
+        language: {
+          url: "https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"
+        }, 
+        pageLength: 10,
+        ordering: true,
+        searching: true,
+        info: false,
+        lengthChange: false
+      });
+    }
+  });
+</script>

@@ -16,12 +16,28 @@
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+
+    <%# Google fonts %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <%# font-awesome %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css" integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%#= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+     <%# datable %>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+
+    <%= javascript_include_tag "https://code.jquery.com/jquery-3.7.1.min.js" %>
+    <%= javascript_include_tag "https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js" %>
+    <%= javascript_include_tag "https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js" %>
+    
   </head>
 
   <body>
@@ -39,7 +55,7 @@
           <div class="collapse navbar-collapse justify-content-end me-2" id="navbarSupportedContent">
             <% if current_page?(root_path) %>
               <div class="d-flex">
-                <%= link_to "Registrar", new_usuario_path, class: "d-block btn btn-warning", method: :post %>
+                <%= link_to "Registrar", new_usuario_path, class: "d-block btn btn-warning fw-bold", method: :post %>
               </div>
             <% end %>
           </div>

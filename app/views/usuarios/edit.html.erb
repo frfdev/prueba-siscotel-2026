@@ -1,4 +1,4 @@
-<div class="bg-warning">    
+<div class="bg-warning-light">    
     <div class="w-50 mx-auto">
         <div class="row">
             <div class="col-12">
@@ -28,12 +28,12 @@
                                         <%= p.label :tipo_persona_id, "Tipo de persona", class: "form-label" %>
                                         <%= p.collection_select :tipo_persona_id, @tipo_persona, :id, :tipo,
                                             { prompt: "Seleccione..." },
-                                            { class: "form-select", required: true } 
+                                            { class: "form-select", autocomplete: "off", required: true, onchange: "checkTipoPersona(this.value)" } 
                                         %>                                
                                     </div>
-                                    <div class="col-6">
-                                        <%= p.label :nombre, "Nombre", class: "form-label" %>
-                                        <%= p.text_field :nombre, class: "form-control", required: true %> 
+                                    <div class="col-6" id="input_nombre">
+                                        <%= p.label :nombre, "Nombre completo", class: "form-label" %>
+                                        <%= p.text_field :nombre, pattern: "[A-Za-záéíóúÁÉÍÓÚñÑ ]+", autocomplete: "off", title: "Solo se permiten letras y espacios", class: "form-control", required: true %> 
                                     </div>                            
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                          <%= p.label :correo, "Correo electrónico", class: "form-label" %>
-                                         <%= p.email_field :correo, class: "form-control", required: true %> 
+                                         <%= p.email_field :correo, pattern: "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", title: "formato de correo invalido", class: "form-control", autocomplete: "off", required: true %> 
                                     </div>                         
                                 </div>
                             </div>
@@ -53,13 +53,19 @@
                                         <%= p.label :telefono_principal, "Teléfono principal", class: "form-label" %>
                                         <%= p.telephone_field :telefono_principal,
                                             class: "form-control",
+                                            pattern: "[0-9]{10,12}",
+                                            title: "formato de telefono primario no es valido o excede la longitud de caracteres, max caracteres 12",
+                                            autocomplete: "off",
                                             required: true 
                                         %>
                                     </div>
                                     <div class="col-6">
-                                        <%= p.label :telefono_secundario, "Teléfono secundario (opcional)", class: "form-label" %>
+                                        <%= p.label :telefono_secundario, "Teléfono secundario (opcional)", class: "form-label"  %>
                                         <%= p.telephone_field :telefono_secundario,
                                             class: "form-control",
+                                            pattern: "[0-9]{10,12}",
+                                            title: "formato de telefono primario no es valido o excede la longitud de caracteres, max caracteres 12",
+                                            autocomplete: "off",
                                             required: false 
                                         %>
                                     </div>
@@ -74,12 +80,12 @@
                                     <%= form.label :tipo_documento_id, "Tipo de documento", class: "form-label" %>
                                     <%= form.collection_select :tipo_documento_id, @tipo_documento, :id, :documento,
                                         { prompt: "Seleccione..." },
-                                        { class: "form-select", required: true } 
+                                        { class: "form-select", autocomplete: "off", required: true, onchange: "checkTipoDocumento(this)" } 
                                     %> 
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6" id="input_documento">
                                     <%= form.label :n_documento, "Número de documento de identificación", class: "form-label" %>
-                                    <%= form.text_field :n_documento, class: "form-control", required: true %> 
+                                    <%= form.text_field :n_documento, pattern: "[0-9]{7,12}", title: "formato de documento invalido o excede la longitud de caracteres, max 12", autocomplete: "off", class: "form-control", required: true %> 
                                 </div>                            
                             </div>
                         </div>
@@ -90,6 +96,7 @@
                                     <%= form.label :fecha_emision, "Fecha de emisión del documento", class: "form-label" %>
                                     <%= form.date_field :fecha_emision,
                                         class: "form-control",
+                                        autocomplete: "off",
                                         required: true 
                                     %>
                                 </div>
@@ -97,7 +104,8 @@
                                     <%= form.label :fecha_vencimiento, "Fecha de vencimiento del documento", class: "form-label" %>
                                     <%= form.date_field :fecha_vencimiento,
                                         class: "form-control",
-                                        required: true 
+                                        autocomplete: "off",
+                                        required: true
                                     %>
                                 </div>
                             </div>
@@ -106,11 +114,11 @@
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-6">
-                                    <%= form.submit "Editar", class: "btn btn-warning w-100" %>
-                                </div>
-                                <div class="col-6">
                                     <%= link_to "Volver", usuarios_path, class: "d-block btn btn-danger w-100" %>
                                 </div>
+                                <div class="col-6">
+                                    <%= form.submit "Editar", class: "btn btn-warning w-100" %>
+                                </div>                                
                             </div>
                         </div>
                     <% end %>
@@ -119,3 +127,8 @@
         </div>
     </div>
 </div>
+
+
+<%= javascript_include_tag "usuarios_edit" %>
+
+

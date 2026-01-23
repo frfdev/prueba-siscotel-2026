@@ -7,10 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+TipoDocumento.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('tipo_documentos')
+
+TipoPersona.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('tipo_personas')
+
+Persona.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('personas')
+
+Usuario.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('usuarios')
+
 TipoDocumento.find_or_create_by(documento: "Cedula")
 TipoDocumento.find_or_create_by(documento: "Pasaporte")
-TipoDocumento.find_or_create_by(documento: "Licencia")
-TipoDocumento.find_or_create_by(documento: "RIF")
+TipoDocumento.find_or_create_by(documento: "Rif")
 
 TipoPersona.find_or_create_by(tipo: "Natural")
 TipoPersona.find_or_create_by(tipo: "Juridico")
