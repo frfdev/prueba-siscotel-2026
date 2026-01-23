@@ -20,8 +20,7 @@ function checkTipoDocumento(tipoDocumento) {
 
     let selectTipoPersona = document.getElementById('usuario_persona_attributes_tipo_persona_id')
 
-    if(selectTipoPersona.value == ''){ 
-        alert('Debe selecionar un tipo de persona')
+    if(selectTipoPersona.value == ''){
         tipoDocumento.value = ''
         return
     }
